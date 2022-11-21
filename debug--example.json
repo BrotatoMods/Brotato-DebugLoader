@@ -1,0 +1,29 @@
+{
+	"debug_weapons": [
+		"weapon_cacti_club_1",
+		"weapon_cacti_club_2",
+		"weapon_cacti_club_3",
+		"weapon_cacti_club_4",
+		"weapon_spear_4",
+		"weapon_spear_4",
+		"weapon_spear_4",
+		"weapon_spear_4",
+		"weapon_spear_4",
+		"weapon_spear_4",
+		"weapon_spear_4",
+		"weapon_spear_4"
+	],
+	"debug_items": [
+		"item_acid",
+		"item_bat"
+	],
+	"starting_wave": 4,
+	"starting_gold": 3000,
+	"invulnerable": false,
+	"instant_waves": false,
+	"add_all_items": false,
+	"add_all_weapons": false,
+	"unlock_all_chars": false,
+	"unlock_all_difficulties": false,
+	"no_weapons": false
+}
