@@ -1,5 +1,7 @@
 # Brotato DebugLoader 1.0.2
 
+_Get the mod files from the `debug` folder._
+
 ## Overview
 
 Set debug options via a JSON file, including initial weapons and items, starting wave, and materials.
@@ -45,6 +47,8 @@ Works with dami's multi mod support (autoload that first, before this).
 
 As the *debug.json* file has its own folder, you can keep as many *debug.json* variants as you need, swapping between them for different test setups.
 
+![](_repo-media/json-example.png)
+
 
 ## Options
 
@@ -68,7 +72,7 @@ As the *debug.json* file has its own folder, you can keep as many *debug.json* v
 
 Add an array of weapon/item IDs to start with them. You **can** go over the weapon limit.
 
-Weapons:
+#### Weapons
 
 	"debug_weapons": [
 		"weapon_spear_1",
@@ -77,7 +81,7 @@ Weapons:
 		"weapon_spear_4",
 	],
 
-Items:
+#### Items
 
 	"debug_items": [
 		"item_acid",
@@ -92,7 +96,7 @@ You can find the IDs in the project in Godot, in each tier's `*_data.tres` file.
 
 The weapon/item ID is called **My ID** in the Inspector.
 
-If you're using **dami's multiple mod support**, your can use IDs for custom weapons and items. (Just make sure this script is below the multi mod in the autoload settings.)
+If you're using **dami's multiple mod support**, your can also use IDs for custom weapons and items. (Just make sure this script is below the multi mod in the autoload settings.)
 
 ![](_repo-media/spear-id.png)
 
