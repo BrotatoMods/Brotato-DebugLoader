@@ -1,14 +1,12 @@
-# Brotato DebugLoader 1.0.2
-
-_Get the mod files from the `debug` folder._
+# Brotato DebugLoader 1.1.0
 
 ## Overview
 
 Set debug options via a JSON file, including initial weapons and items, starting wave, and materials.
 
-Developed to help modders test different weapons, items and builds.
+Developed to help modders test new content. Can also be used to create **custom challenges**, via a single JSON file.
 
-Works with dami's multi mod support (autoload that first, before this).
+This is a standalone drop-in script: Add it, autoload it, and you're done. It doesn't affect vanilla code. It also works with dami's multi mod support (autoload that first, before this).
 
 * [Details](#details)
 * [Usage](#usage)
@@ -16,8 +14,10 @@ Works with dami's multi mod support (autoload that first, before this).
   * [Using debug.json](#using-debugjson)
 * [Options](#options)
   * [Available Options](#available-options)
-  * [Weapons &amp; Items](#weapons--items)
+  * [Weapons](#weapons--items)
+  * [Items](#items)
   * [IDs](#IDs)
+  * [load_from](#load_from)
 * [Notes](#notes)
   * [Validation](#validation)
   * [Default debug.json](#default-debugjson)
@@ -25,8 +25,9 @@ Works with dami's multi mod support (autoload that first, before this).
   * [Links](#links)
   * [Credits](#credits)
 
-
 ## Usage
+
+_Get the mod files from the `debug` folder on this repo._
 
 ### Add the framework to an existing mod
 
@@ -41,11 +42,10 @@ Works with dami's multi mod support (autoload that first, before this).
 
 ### Using debug.json
 
-* Backup your save, just in case
+**Backup your save, just in case.**
+
 * Put *debug.json* in a folder named `debug` in the game folder
 * Edit *debug.json* and start the game
-
-As the *debug.json* file has its own folder, you can keep as many *debug.json* variants as you need, swapping between them for different test setups.
 
 ![](_repo-media/json-example.png)
 
@@ -54,25 +54,26 @@ As the *debug.json* file has its own folder, you can keep as many *debug.json* v
 
 ### Available Options
 
-| Option                  | Type  | Default | Notes                                   |
-| ----------------------- | ----- | ------- | --------------------------------------- |
-| debug_weapons           | array | `[]`    | Set your starting weapons (see below)   |
-| debug_items             | array | `[]`    | Set your starting items (see below)     |
-| starting_wave           | int   | `1`     | Sets initial wave. Supports `1` - `21`  |
-| starting_gold           | int   | `30`    | Sets initial materials                  |
-| invulnerable            | bool  | `false` | Disables your hurtbox                   |
-| instant_waves           | bool  | `false` | Waves only last 1 second (good for checking rarer shop items) |
-| add_all_items           | bool  | `false` | Adds every item to your character       |
-| add_all_weapons         | bool  | `false` | Adds every weapon (can go over limit)   |
-| unlock_all_chars        | bool  | `false` | Unlocks all characters (temporary?)     |
-| unlock_all_difficulties | bool  | `false` | Unlocks all danger levels (temporary?)  |
-| no_weapons              | bool  | `false` | Removes all weapons at the start of every wave |
+| Option                  | Type   | Default      | Notes                                   |
+| ----------------------- | -----  | ------------ | --------------------------------------- |
+| debug_weapons           | array  | `[]`         | Set your starting weapons (see below)   |
+| debug_items             | array  | `[]`         | Set your starting items (see below)     |
+| starting_wave           | int    | `1`          | Sets initial wave. Supports `1` - `21`  |
+| starting_gold           | int    | `30`         | Sets initial materials                  |
+| invulnerable            | bool   | `false`      | Disables your hurtbox                   |
+| instant_waves           | bool   | `false`      | Waves only last 1 second (good for testing rarer shops) |
+| add_all_items           | bool   | `false`      | Adds every item to your character. Same items stack. |
+| add_all_weapons         | bool   | `false`      | Adds every weapon (can go over limit)   |
+| unlock_all_chars        | bool   | `false`      | Unlocks all characters (temporary)      |
+| unlock_all_difficulties | bool   | `false`      | Unlocks all danger levels (temporary)   |
+| no_weapons              | bool   | `false`      | Removes all weapons at the start of every wave |
+| load_from               | string | `debug.json` | Load data from a different JSON file † |
 
-### Weapons & Items
-
-Add an array of weapon/item IDs to start with them. You **can** go over the weapon limit.
+† *This is not recursive, the `load_from` option is only ever checked once, in _debug.json_.*
 
 #### Weapons
+
+Add an array of weapon IDs to start with them. You can go over the weapon limit.
 
 	"debug_weapons": [
 		"weapon_spear_1",
@@ -83,12 +84,17 @@ Add an array of weapon/item IDs to start with them. You **can** go over the weap
 
 #### Items
 
+Add an array of item IDs. You can use the same item multiple times to make it stack (including unique items).
+
 	"debug_items": [
 		"item_acid",
+		"item_bat",
 		"item_bat"
 	],
 
 ### IDs
+
+_Note: All weapon & item IDs up to v0.6.7 are listed in this repo, see IDs-*.md_
 
 You can find the IDs in the project in Godot, in each tier's `*_data.tres` file.
 
@@ -99,6 +105,14 @@ The weapon/item ID is called **My ID** in the Inspector.
 If you're using **dami's multiple mod support**, your can also use IDs for custom weapons and items. (Just make sure this script is below the multi mod in the autoload settings.)
 
 ![](_repo-media/spear-id.png)
+
+### load_from
+
+The `load_from` option lets you load from a different JSON file in the `debug` folder, instead of *debug.json*.
+
+This means you can keep as many *debug.json* variants as you need, swapping between them for different test setups. To switch them, you can just change the `load_from` option in *debug.json*.
+
+
 
 
 ## Notes

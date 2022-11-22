@@ -2,13 +2,14 @@ extends Node
 
 # DebugLoader v1.0.2
 #
-# Version: 1.0.2
+# Version: 1.1.0
 # Author:  Darkly77 (with help from dami)
 # Wiki:    https://brotato.wiki.spellsandguns.com/Mod:DebugLoader
 # Repo:    https://github.com/ithinkandicode/Brotato-DebugLoader
 
 const debug_path = "res://debug/"
 const json_path  = "res://debug/debug.json"
+const json_patx  = "res://debug/debug--TEST.json"
 
 func _ready():
 	print( "[debug_loader] Ready" )
@@ -27,6 +28,18 @@ func _ready():
 		var content = json_file.get_as_text()
 		var dictionary = parse_json( content )
 		json_file.close()
+
+		# Check `load_from` option
+		# This lets you load a different JSON, from the main one
+		var loadfrom_file = dictionary.load_from
+		if loadfrom_file != "debug.json" and loadfrom_file != "":
+			print( "[debug_loader] Following load_from path: " + debug_path + loadfrom_file )
+			var loadfrom_dic = get_json_data( debug_path + loadfrom_file )
+			if loadfrom_dic != null:
+				dictionary = loadfrom_dic
+				print( "[debug_loader] Loaded from custom json (" + loadfrom_file + ")" )
+			else:
+				print( "[debug_loader] Failed to load from custom json (" + loadfrom_file + ")" )
 
 		# Debug: Print the full json contents
 		# print("[debug_loader] JSON:" + dictionary)
@@ -78,3 +91,17 @@ func _ready():
 		DebugService.no_weapons       = dictionary.no_weapons       # default: false - Removes all weapons
 
 		print( "[debug_loader] Finished" )
+
+
+func get_json_data( json_path ):
+	var json_file = File.new()
+	var json_exists = json_file.file_exists( json_path )
+	if !json_exists:
+		json_file.close()
+		return null
+
+	json_file.open( json_path, File.READ )
+	var content = json_file.get_as_text()
+	var dictionary = parse_json( content )
+	json_file.close()
+	return dictionary
