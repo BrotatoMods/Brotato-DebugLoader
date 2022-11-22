@@ -67,9 +67,7 @@ _Get the mod files from the `debug` folder on this repo._
 | unlock_all_chars        | bool   | `false`      | Unlocks all characters (temporary)      |
 | unlock_all_difficulties | bool   | `false`      | Unlocks all danger levels (temporary)   |
 | no_weapons              | bool   | `false`      | Removes all weapons at the start of every wave |
-| load_from               | string | `debug.json` | Load data from a different JSON file † |
-
-† *This is not recursive, the `load_from` option is only ever checked once, in _debug.json_.*
+| load_from               | string | `debug.json` | Load data from a different JSON file    |
 
 #### Weapons
 
@@ -94,7 +92,7 @@ Add an array of item IDs. You can use the same item multiple times to make it st
 
 ### IDs
 
-_Note: All weapon & item IDs up to v0.6.7 are listed in this repo, see IDs-*.md_
+_Note: All weapon & item IDs up to v0.6.7 are listed in this repo, see _repo-docs/IDs-*.md_
 
 You can find the IDs in the project in Godot, in each tier's `*_data.tres` file.
 
@@ -112,7 +110,9 @@ The `load_from` option lets you load from a different JSON file in the `debug` f
 
 This means you can keep as many *debug.json* variants as you need, swapping between them for different test setups. To switch them, you can just change the `load_from` option in *debug.json*.
 
+One bonus feature of DebugLoader is the ability to create and share custom challenges, so the `load_from` option makes it quick to switch between them.
 
+<small>*Note: This option is not recursive, ie. the `load_from` option is only ever checked once, in _debug.json_.*</small>
 
 
 ## Notes
