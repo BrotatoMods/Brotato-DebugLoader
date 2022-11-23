@@ -35,7 +35,7 @@ _Get the mod files from the `debug` folder on this repo._
 * Add it to your autoloads:
   * Project > Project Settings > Autoload
   * Click the little folder icon at the top to locate this file
-  * Leave the name as `DebugLoader`
+  * Leave the name as `DebugLoader`, and click Add
   * Make sure it's below dami's multiple mod support script (if applicable)
 
 ![](_repo-media/autoload-crop.png)
