@@ -73,22 +73,26 @@ _Get the mod files from the `debug` folder on this repo._
 
 Add an array of weapon IDs to start with them. You can go over the weapon limit.
 
-	"debug_weapons": [
-		"weapon_spear_1",
-		"weapon_spear_2",
-		"weapon_spear_3",
-		"weapon_spear_4",
-	],
+```json
+"debug_weapons": [
+	"weapon_spear_1",
+	"weapon_spear_2",
+	"weapon_spear_3",
+	"weapon_spear_4",
+],
+```
 
 #### Items
 
 Add an array of item IDs. You can use the same item multiple times to make it stack (including unique items).
 
-	"debug_items": [
-		"item_acid",
-		"item_bat",
-		"item_bat"
-	],
+```json
+"debug_items": [
+	"item_acid",
+	"item_bat",
+	"item_bat"
+],
+```
 
 ### IDs
 
@@ -127,19 +131,21 @@ Godot isn't great with informative crash reports, so invalid or malformed JSON c
 
 By default, debug.json looks like this, using values from vanilla:
 
-	{
-		"debug_weapons": [],
-		"debug_items": [],
-		"starting_wave": 1,
-		"starting_gold": 30,
-		"invulnerable": false,
-		"instant_waves": false,
-		"add_all_items": false,
-		"add_all_weapons": false,
-		"unlock_all_chars": false,
-		"unlock_all_difficulties": false,
-		"no_weapons": false
-	}
+```json
+{
+	"debug_weapons": [],
+	"debug_items": [],
+	"starting_wave": 1,
+	"starting_gold": 30,
+	"invulnerable": false,
+	"instant_waves": false,
+	"add_all_items": false,
+	"add_all_weapons": false,
+	"unlock_all_chars": false,
+	"unlock_all_difficulties": false,
+	"no_weapons": false
+}
+```
 
 ### debug_service
 
