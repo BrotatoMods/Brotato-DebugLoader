@@ -143,7 +143,8 @@ By default, debug.json looks like this, using values from vanilla:
 	"add_all_weapons": false,
 	"unlock_all_chars": false,
 	"unlock_all_difficulties": false,
-	"no_weapons": false
+	"no_weapons": false,
+	"load_from": "debug.json"
 }
 ```
 
