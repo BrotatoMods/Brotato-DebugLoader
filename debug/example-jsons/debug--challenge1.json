@@ -4,12 +4,6 @@
 	"Notes": "JSON accepts any key (like A or B), you can use them to make your own notes",
 
 	"debug_weapons": [
-		"weapon_hatchet_4",
-		"weapon_hatchet_4",
-		"weapon_hatchet_4",
-		"weapon_hatchet_4",
-		"weapon_hatchet_4",
-		"weapon_hatchet_4"
 	],
 	"debug_items": [
 		"item_jetpack",
